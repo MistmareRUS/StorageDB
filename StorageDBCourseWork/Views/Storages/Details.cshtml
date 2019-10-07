@@ -1,0 +1,35 @@
+﻿@model StorageDBCourseWork.Models.Storage
+
+@{
+    ViewBag.Title = "Склады";
+}
+
+<h2>склад "@Model.Name"</h2>
+
+<div>
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)   <span>м<sup>2</sup></span>
+        </dd>
+
+    </dl>
+</div>
+@Html.Partial("_StorageItems", Model.Products, new ViewDataDictionary { { "storageId",Model.Id} })
+<hr/>
+<p>
+    @Html.ActionLink("Редактировать склад", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>
