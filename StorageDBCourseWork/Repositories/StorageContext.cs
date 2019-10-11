@@ -1,4 +1,5 @@
-﻿using StorageDBCourseWork.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using StorageDBCourseWork.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,17 +8,27 @@ using System.Web;
 
 namespace StorageDBCourseWork.Repositories
 {
-    public class StorageContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Storage> Storages { get; set; }
         public DbSet<StorageItem> StorageItems { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<MovingItem> MovingItems { get; set; }
+        public ApplicationDbContext()
+           : base("DefaultConnection", throwIfV1Schema: false)
+        {
+        }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
     }
-    public class StorageInitializer : DropCreateDatabaseAlways<StorageContext>
+
+    public class StorageInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
     //public class StorageInitializer : CreateDatabaseIfNotExists<StorageContext>
     {
-        protected override void Seed(StorageContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             context.Products.Add(new Product { Name = "Кирпич глиняный", Discrption = "Кирпич глиняный, пустотелый", Units = "шт", Stackable = true, Lenght = 0.25, Width = 0.12, Height = 0.065 });
             context.Products.Add(new Product { Name = "Кирпич белый", Discrption = "Кирпич белый, декоративный", Units = "шт", Stackable = true, Lenght = 0.25, Width = 0.12, Height = 0.088 });

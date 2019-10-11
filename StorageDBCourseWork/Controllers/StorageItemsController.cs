@@ -13,7 +13,7 @@ namespace StorageDBCourseWork.Controllers
 {
     public class StorageItemsController : Controller
     {
-        private StorageContext db = new StorageContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: StorageItems
         public ActionResult Index()

@@ -15,7 +15,7 @@ namespace StorageDBCourseWork.Controllers
 {
     public class StoragesController : Controller
     {
-        private StorageContext db = new StorageContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public StoragesController()
         {

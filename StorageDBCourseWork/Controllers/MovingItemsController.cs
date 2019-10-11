@@ -13,7 +13,7 @@ namespace StorageDBCourseWork.Controllers
 {
     public class MovingItemsController : Controller
     {
-        private StorageContext db = new StorageContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: MovingItems
         public ActionResult Index()
