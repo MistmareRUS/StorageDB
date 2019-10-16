@@ -1,0 +1,47 @@
+﻿@model StorageDBCourseWork.Models.MovingItem
+
+<div>
+    <h4>Перемещение</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StorageFromId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StorageFromId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StorageToId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StorageToId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @Html.Partial("_StorageItems", Model)
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

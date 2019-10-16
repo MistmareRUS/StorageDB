@@ -16,11 +16,7 @@ namespace StorageDBCourseWork.Controllers
     public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        public ProductsController()
-        {
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
-            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
-        }
+        
         // GET: Products
         public ActionResult Index()
         {

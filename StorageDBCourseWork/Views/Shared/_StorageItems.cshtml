@@ -1,72 +1,74 @@
-﻿@model IEnumerable<StorageDBCourseWork.Models.StorageItem>
+﻿@using StorageDBCourseWork.Models
+@model MovingItem
 
 <p>
-    @Html.ActionLink("Добавить новый товар", "Create",  "StorageItems",new { storageId = ViewBag.storageId },null)
+    @Html.ActionLink("Добавить новый товар", "Create", "StorageItems", new { movingItemId = Model.Id }, null)
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Product.Name)
+            @Html.DisplayNameFor(model => ((StorageItem)model.StorageItems).Name)
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.Count)
+            @Html.DisplayNameFor(model => ((StorageItem)model.StorageItems).Count)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Product.Units)
+            @Html.DisplayNameFor(model => ((StorageItem)model.StorageItems).Units)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Product.Lenght)
+            @Html.DisplayNameFor(model => ((StorageItem)model.StorageItems).Product.Lenght)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Product.Width)
+            @Html.DisplayNameFor(model => ((StorageItem)model.StorageItems).Product.Width)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Product.Height)
+            @Html.DisplayNameFor(model => ((StorageItem)model.StorageItems).Product.Height)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Product.Stackable)
+            @Html.DisplayNameFor(model => ((StorageItem)model.StorageItems).Product.Stackable)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr style=" border-bottom:hidden">
-        <td>
-            @Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductId }, null) 
-        </td>
+    @foreach (var item in Model.StorageItems)
+    {
+        <tr style=" border-bottom:hidden">
+            <td>
+                @Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductId }, null)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Units)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Lenght)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Width)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Height)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Stackable)
-        </td>
-        <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Units)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Lenght)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Stackable)
+            </td>
+            <td></td>
 
-    </tr>
-    <tr>
-        <td colspan="7">
-            <i>@Html.DisplayFor(modelItem => item.Comment)</i>
-        </td>   
-        <td>
-            @Html.ActionLink("Редактировать", "Edit", "StorageItems", new { id = item.Id }, null) |
-            @Html.ActionLink("Просмотр", "Details", "StorageItems", new { id = item.Id }, null) |
-            @Html.ActionLink("Удалить", "Delete", "StorageItems", new { id = item.Id }, null)
-        </td>
-    </tr>
-}
+        </tr>
+        <tr>
+            <td colspan="7">
+                <i>@Html.DisplayFor(modelItem => item.Comment)</i>
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", "StorageItems", new { id = item.Id }, null) |
+                @Html.ActionLink("Просмотр", "Details", "StorageItems", new { id = item.Id }, null) |
+                @Html.ActionLink("Удалить", "Delete", "StorageItems", new { id = item.Id }, null)
+            </td>
+        </tr>
+    }
 
 </table>

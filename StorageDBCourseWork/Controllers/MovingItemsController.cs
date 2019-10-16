@@ -40,9 +40,11 @@ namespace StorageDBCourseWork.Controllers
         // GET: MovingItems/Create
         public ActionResult Create()
         {
+            List<SelectListItem> items = new SelectList(db.Storages, "Id", "Name").ToList();
+            items.RemoveAt(0);
             ViewBag.StorageFromId = new SelectList(db.Storages, "Id", "Name");
-            ViewBag.StorageToId = new SelectList(db.Storages, "Id", "Name");
-            return View();
+            ViewBag.StorageToId = items;
+            return View(new MovingItem());
         }
 
         // POST: MovingItems/Create
@@ -50,19 +52,35 @@ namespace StorageDBCourseWork.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,StorageFromId,StorageToId")] MovingItem movingItem)
+        public ActionResult Create(MovingItem movingItem)
         {
             if (ModelState.IsValid)
             {
-                db.MovingItems.Add(movingItem);
+                movingItem.Date = DateTime.Now;
+                var mi = db.MovingItems.Add(movingItem);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("StorageItemsCreate", new { id = mi.Id });
             }
-
             ViewBag.StorageFromId = new SelectList(db.Storages, "Id", "Name", movingItem.StorageFromId);
             ViewBag.StorageToId = new SelectList(db.Storages, "Id", "Name", movingItem.StorageToId);
             return View(movingItem);
         }
+        
+        //добавление строк товаров перемещения
+        public ActionResult StorageItemsCreate(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            MovingItem movingItem = db.MovingItems.Find(id);
+            if (movingItem == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movingItem);
+        }
+        
 
         // GET: MovingItems/Edit/5
         public ActionResult Edit(int? id)

@@ -17,15 +17,11 @@ namespace StorageDBCourseWork.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public StoragesController()
-        {
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
-            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
-        }
+        
         // GET: Storages
         public ActionResult Index()
         {
-            return View(db.Storages.ToList());
+            return View(db.Storages.ToList().Skip(1));
         }
 
         // GET: Storages/Details/5

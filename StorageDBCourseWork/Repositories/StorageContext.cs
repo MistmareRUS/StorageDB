@@ -26,10 +26,13 @@ namespace StorageDBCourseWork.Repositories
     }
 
     public class StorageInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
-    //public class StorageInitializer : CreateDatabaseIfNotExists<StorageContext>
+    //public class StorageInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
+            context.Storages.Add(new Storage { Name = "[Поступление]", Location = "", Area = 0.0, Products = new List<StorageItem>() });
+
+
             context.Products.Add(new Product { Name = "Кирпич глиняный", Discrption = "Кирпич глиняный, пустотелый", Units = "шт", Stackable = true, Lenght = 0.25, Width = 0.12, Height = 0.065 });
             context.Products.Add(new Product { Name = "Кирпич белый", Discrption = "Кирпич белый, декоративный", Units = "шт", Stackable = true, Lenght = 0.25, Width = 0.12, Height = 0.088 });
             context.Products.Add(new Product { Name = "Цемент", Discrption = "Цемент марки 500", Units = "уп", Stackable = true, Lenght = 0.63, Width = 0.5, Height = 0.1 });

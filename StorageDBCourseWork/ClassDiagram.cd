@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StorageDBCourseWork.Models.Product">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAAAAAAAAAUQIAAAAAEAAEAAAACAAAAA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StorageDBCourseWork.Models.MovingItem">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAABAAAAAQgIAgAAAAABAAgAAAAAAAA=</HashCode>
+      <FileName>Models\MovingItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StorageDBCourseWork.Models.Storage">
+    <Position X="2" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAQAAAAQ=</HashCode>
+      <FileName>Models\Storage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StorageDBCourseWork.Models.StorageItem">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAEAAAEAAAAAAAAAAQAAAAAAAAAEAAAQAAAAgA=</HashCode>
+      <FileName>Models\StorageItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

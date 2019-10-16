@@ -38,10 +38,12 @@ namespace StorageDBCourseWork.Controllers
         }
 
         // GET: StorageItems/Create
-        public ActionResult Create(int storageId)
+        public ActionResult Create(int movingItemId)
         {
             ViewBag.ProductId = new SelectList(db.Products, "Id", "Name");
-            ViewBag.StorageId = storageId;
+            var mi = db.MovingItems.Find(movingItemId);
+            ViewBag.StorageId = mi.StorageToId;
+            ViewBag.MovingItemId =mi.Id;
             return View();
         }
 
@@ -50,13 +52,13 @@ namespace StorageDBCourseWork.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Count,Comment,ProductId,StorageId")] StorageItem storageItem)
+        public ActionResult Create(StorageItem storageItem)
         {
             if (ModelState.IsValid)
             {
                 db.StorageItems.Add(storageItem);
                 db.SaveChanges();
-                return RedirectToAction("Details", "Storages",new { id=storageItem.StorageId });
+                return RedirectToAction("StorageItemsCreate", "MovingItems",new { id=storageItem.MovingItemId });
             }
 
             ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", storageItem.ProductId);
